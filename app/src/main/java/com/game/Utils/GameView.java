@@ -1,10 +1,12 @@
 package com.game.Utils;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -18,6 +20,7 @@ import java.util.List;
 
 
 public class GameView extends LinearLayout {
+    private final String TAG = getClass().getSimpleName() + "@" + Integer.toHexString(hashCode());
 
     private Context context;
     private MediaPlayer player;
@@ -41,7 +44,7 @@ public class GameView extends LinearLayout {
 
     //初始化Gameview
     private void initGameView() {
-
+        Log.d(TAG, "initGameView()");
         setOrientation(LinearLayout.VERTICAL);
         setBackgroundColor(0xffbbada0);
         setOnTouchListener(new OnTouchListener() {
@@ -94,18 +97,20 @@ public class GameView extends LinearLayout {
     //初始化卡片大小
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+//        Log.d(TAG, "onSizeChanged(), w= " + w + ", h= " + h);
         super.onSizeChanged(w, h, oldw, oldh);
 
         Config.CARD_WIDTH = (Math.min(w, h) - 10) / Config.LINES;
 
-        addCards(Config.CARD_WIDTH, Config.CARD_WIDTH);
+        initialLayout(Config.CARD_WIDTH, Config.CARD_WIDTH);
 
         startGame();
     }
 
-    //添加卡片
-    private void addCards(int cardWidth, int cardHeight) {
 
+    //添加卡片
+    private void initialLayout(int cardWidth, int cardHeight) {
+        Log.d(TAG, "initialLayout(), cardWidth= " + cardWidth + ", cardHeight= " + cardHeight);
         Card c;
 
         LinearLayout line;
@@ -127,15 +132,17 @@ public class GameView extends LinearLayout {
 
     //开始游戏（也是重新开始）
     public void startGame() {
-
+        Log.i(TAG, "startGame()");
         MainFragment aty = MainFragment.getMainFragment();
         aty.clearScore();
         aty.showBestScore(aty.getBestScore());
 
-
         for (int y = 0; y < Config.LINES; y++) {
             for (int x = 0; x < Config.LINES; x++) {
                 cardsMap[x][y].setNum(0);
+                if (MainFragment.getMainFragment().getAnimLayer().getOldCardsMap()[x][y] != null) {
+                    MainFragment.getMainFragment().getAnimLayer().recycleCard(MainFragment.getMainFragment().getAnimLayer().getOldCardsMap()[x][y]);
+                }
             }
         }
 
@@ -145,7 +152,7 @@ public class GameView extends LinearLayout {
 
     //添加随机卡片
     private void addRandomNum() {
-
+        Log.d(TAG, "addRandomNum()");
         emptyPoints.clear();
         for (int y = 0; y < Config.LINES; y++) {
             for (int x = 0; x < Config.LINES; x++) {
@@ -156,19 +163,18 @@ public class GameView extends LinearLayout {
         }
 
         if (emptyPoints.size() > 0) {
-
-            Point p = emptyPoints.remove((int) (Math.random() * emptyPoints
-                    .size()));
+//            Log.d(TAG, "- emptyPoints.size()= " + emptyPoints.size());
+            Point p = emptyPoints.remove((int) (Math.random() * emptyPoints.size()));
+            Log.w(TAG, "p= " + p);
             cardsMap[p.x][p.y].setNum(Math.random() > 0.1 ? 2 : 4);
 
-            MainFragment.getMainFragment().getAnimLayer()
-                    .createScaleTo1(cardsMap[p.x][p.y]);
+            MainFragment.getMainFragment().getAnimLayer().createScaleTo1(cardsMap[p.x][p.y], p.x, p.y);
         }
     }
 
     //向左移动
     private void swipeLeft() {
-
+//        Log.d(TAG, "swipeLeft()");
 
         boolean merge = false;
 
@@ -220,7 +226,7 @@ public class GameView extends LinearLayout {
 
     //向右移动
     private void swipeRight() {
-
+//        Log.d(TAG, "swipeRight()");
 
         boolean merge = false;
 
@@ -268,7 +274,7 @@ public class GameView extends LinearLayout {
 
     //向上移动
     private void swipeUp() {
-
+//        Log.d(TAG, "swipeUp()");
 
         boolean merge = false;
 
@@ -318,7 +324,7 @@ public class GameView extends LinearLayout {
 
     //向下移动
     private void swipeDown() {
-
+//        Log.d(TAG, "swipeDown()");
 
         boolean merge = false;
 

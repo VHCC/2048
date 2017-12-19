@@ -2,6 +2,7 @@ package com.game.Model;
 
 import android.content.Context;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.game.R;
 
 public class Card extends FrameLayout {
+    private final String TAG = getClass().getSimpleName() + "@" + Integer.toHexString(hashCode());
 
     private TextView label;
     private View background;
@@ -17,13 +19,13 @@ public class Card extends FrameLayout {
 
     public Card(Context context) {
         super(context);
+//        Log.d(TAG, "Card()");
         LayoutParams lp = null;
 
         background = new View(getContext());
         lp = new LayoutParams(-1, -1);
         lp.setMargins(10, 10, 0, 0);
-        background.setBackgroundColor(getResources().getColor(
-                R.color.normalCardBack));
+        background.setBackgroundColor(getResources().getColor(R.color.normalCardBack));
         addView(background, lp);
 
         label = new TextView(getContext());
@@ -46,7 +48,7 @@ public class Card extends FrameLayout {
 
     public void setNum(int num) {
         this.num = num;
-
+//        Log.d(TAG, "setNum(), num= " + num);
         if (num <= 0) {
             label.setText("");
         } else {

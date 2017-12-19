@@ -99,10 +99,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     public void run() {
 
                         //一次加载几个百分比
-                        bnp.incrementProgressBy(1);
+                        bnp.incrementProgressBy(20);
                         counter++;
                         //当进度条到达100时候进度条结束加载
-                        if (counter == 100) {
+                        if (counter == 5) {
                             //设置progress样式
                             bnp.setProgress(0);
                             counter = 0;

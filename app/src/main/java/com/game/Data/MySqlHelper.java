@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by longlong on 2015/4/28.
  */
 public class MySqlHelper extends SQLiteOpenHelper {
+    private final String TAG = getClass().getSimpleName() + "@" + Integer.toHexString(hashCode());
+
     public MySqlHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }

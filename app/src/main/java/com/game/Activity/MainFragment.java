@@ -14,6 +14,8 @@ import com.game.Utils.AnimLayer;
 import com.game.Utils.GameView;
 
 public class MainFragment extends Fragment {
+    private final String TAG = getClass().getSimpleName() + "@" + Integer.toHexString(hashCode());
+
 
     private int score = 0;
     private TextView tvScore, tvBestScore;
