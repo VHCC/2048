@@ -21,6 +21,9 @@ import com.game.Utils.TitanicTextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.game.Config.Config.LOADING_SEC;
+import static com.game.Config.Config.QUIT_SECOND;
+
 
 public class LoginActivity extends Activity implements View.OnClickListener {
 
@@ -47,7 +50,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     //以下为加载进度条
 
-    private int counter;
     private Timer timer;
 
     @Override
@@ -86,7 +88,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         final NumberProgressBar bnp = (NumberProgressBar) findViewById(R.id.number_progress_bar);
 
         //开始加载
-        counter = 0;
         timer = new Timer();
 
         //进度条线程
@@ -99,16 +100,14 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     public void run() {
 
                         //一次加载几个百分比
-                        bnp.incrementProgressBy(20);
-                        counter++;
+                        bnp.incrementProgressBy(LOADING_SEC);
                         //当进度条到达100时候进度条结束加载
-                        if (counter == 5) {
+                        if (bnp.getProgress() == 100) {
                             //设置progress样式
                             bnp.setProgress(0);
-                            counter = 0;
                             //隐藏进度条   显示两个按钮
                             bnp.setVisibility(View.INVISIBLE);
-                            mTvStartCharts.setVisibility(View.VISIBLE);
+//                            mTvStartCharts.setVisibility(View.VISIBLE);
                             mTvStartGame.setVisibility(View.VISIBLE);
                         }
                     }
@@ -172,7 +171,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (System.currentTimeMillis() - firsttime < 3000) {
+            if (System.currentTimeMillis() - firsttime < QUIT_SECOND) {
                 finish();
                 return true;
             } else {

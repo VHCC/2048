@@ -6,17 +6,19 @@ import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
-
 import com.game.R;
 
 public class BackGroundMusicService extends Service implements MediaPlayer.OnCompletionListener {
+    private final String TAG = getClass().getSimpleName() + "@" + Integer.toHexString(hashCode());
 
-    MediaPlayer player;
+    private MediaPlayer player;
 
     private final IBinder binder = new AudioBinder();
 
     @Override
     public void onCreate() {
+        Log.d(TAG, "onCreate()");
+
         super.onCreate();
         //建立音频播放
         player = MediaPlayer.create(this, R.raw.login_back);
@@ -38,8 +40,7 @@ public class BackGroundMusicService extends Service implements MediaPlayer.OnCom
     //销毁service
     @Override
     public void onDestroy() {
-
-        Log.d("service", "fuwu");
+        Log.d(TAG, "onDestroy()");
 
         if (player.isPlaying()) {
             player.stop();

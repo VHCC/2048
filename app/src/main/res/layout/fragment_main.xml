@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/allBack"
@@ -16,28 +16,28 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_weight="1"
-            android:background="@color/scoreBack"
-            android:gravity="center"
-            android:orientation="vertical">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@color/scoreBack"
+                android:gravity="center"
+                android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/score"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/otherFont" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/score"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/otherFont"/>
             <!-- 字体 -->
 
             <TextView
-                android:id="@+id/tvScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/otherFont" />
+                    android:id="@+id/tvScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/otherFont"/>
         </LinearLayout>
         <!-- weight 权值 -->
 
@@ -69,21 +69,22 @@
 
     <FrameLayout
         android:id="@+id/gameContainer"
-        android:layout_width="320dp"
-        android:layout_height="320dp"
+        android:layout_width="340sp"
+        android:layout_height="340sp"
+        android:layout_margin="20dp"
         android:layout_gravity="center_horizontal"
         android:background="@color/gameViewBack">
 
         <!-- 游戏控件 -->
 
-        <com.game.Utils.GameView
+        <com.game.CustomView.GameView
             android:id="@+id/gameView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <!-- 动画控件 -->
 
-        <com.game.Utils.AnimLayer
+        <com.game.CustomView.AnimLayer
             android:id="@+id/animLayer"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

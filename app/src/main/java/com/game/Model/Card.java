@@ -19,7 +19,6 @@ public class Card extends FrameLayout {
 
     public Card(Context context) {
         super(context);
-//        Log.d(TAG, "Card()");
         LayoutParams lp = null;
 
         background = new View(getContext());

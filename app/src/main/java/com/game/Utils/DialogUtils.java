@@ -13,8 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.game.Activity.MainFragment;
+import com.game.Activity.Fragment.MainFragment;
 import com.game.Data.MySqlHelper;
+import com.game.Helper.GameHelper;
 import com.game.Model.Gamer;
 import com.game.R;
 
@@ -22,6 +23,8 @@ import com.game.R;
  * Created by longlong on 2015/4/28.
  */
 public class DialogUtils {
+    private final String TAG = getClass().getSimpleName() + "@" + Integer.toHexString(hashCode());
+
     public static void getAddChartDialog(final Context context, final int score) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflate = LayoutInflater.from(context);
@@ -38,12 +41,12 @@ public class DialogUtils {
                 values.put("user_name", editText.getText().toString());
                 values.put("user_score", score);
                 db.insert("charts", "id", values);
-                MainFragment.getMainFragment().startGame();
+                GameHelper.getInstance().startGame();
             }
         }).setNegativeButton(R.string.dialog_negative, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MainFragment.getMainFragment().startGame();
+                GameHelper.getInstance().startGame();
             }
         });
         AlertDialog dialog = builder.create();

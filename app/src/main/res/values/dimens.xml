@@ -9,4 +9,9 @@
     <dimen name="title_text_size">26sp</dimen>
     <dimen name="tool_bar_height">56dp</dimen>
 
+    <dimen name="common_divide_line_size">1px</dimen>
+
+    <!-- Common, Dialog-->
+    <dimen name="common_dialog_content_padding">15dp</dimen>
+
 </resources>

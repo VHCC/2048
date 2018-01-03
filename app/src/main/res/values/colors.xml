@@ -56,4 +56,8 @@
     <color name="transparent">#00000000</color>
 
     <color name="text_color">#222222</color>
+
+    <color name="systemSearchingDialogListChooserDivideLine">#FF000000</color>
+    <color name="dashboardTitleBarTextColor">#FF0B5195</color>
+    <color name="app_common_dialog_Content_Background">#FFFFFFFF</color>
 </resources>

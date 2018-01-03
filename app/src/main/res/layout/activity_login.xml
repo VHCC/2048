@@ -28,7 +28,7 @@
             android:layout_height="wrap_content" />
 
         <com.game.Utils.TitanicTextView
-
+            android:visibility="gone"
             android:layout_margin="20dp"
             android:background="@drawable/btn_login"
             android:gravity="center"
