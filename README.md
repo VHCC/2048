@@ -1,7 +1,5 @@
 ### Android2048
 
-本人博客：[smallsoho.com](http://www.smallsoho.com)
-
 包括各种特效，功能包括：
 
 - 排行榜功能实现
