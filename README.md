@@ -1,21 +1,21 @@
 ### Android2048
 
-包括各种特效，功能包括：
+包括各種特效，功能包括：
 
-- 排行榜功能实现
-- 正常游戏界面
+- 排行榜功能實現
+- 正常遊戲界面
 - 攻略教程
-- 开始游戏界面
+- 開始遊戲界面
 
-### 使用到的开源库
+### 使用到的開源庫
 
-TextView水波纹动画  [https://github.com/RomainPiel/Titanic](https://github.com/RomainPiel/Titanic)
+TextView水波紋動畫  [https://github.com/RomainPiel/Titanic](https://github.com/RomainPiel/Titanic)
 
-开始界面滚动条  [https://github.com/daimajia/NumberProgressBar](https://github.com/daimajia/NumberProgressBar)
+開始界面滾動條  [https://github.com/daimajia/NumberProgressBar](https://github.com/daimajia/NumberProgressBar)
 
-好看的菜单  [https://github.com/Yalantis/Context-Menu.Android](https://github.com/Yalantis/Context-Menu.Android)
+好看的菜單  [https://github.com/Yalantis/Context-Menu.Android](https://github.com/Yalantis/Context-Menu.Android)
 
-可滑动的ListView [https://github.com/baoyongzhang/SwipeMenuListView](https://github.com/baoyongzhang/SwipeMenuListView)
+可滑動的ListView [https://github.com/baoyongzhang/SwipeMenuListView](https://github.com/baoyongzhang/SwipeMenuListView)
 
 ### 展示
 
